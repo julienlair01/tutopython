@@ -14,16 +14,15 @@ characters = [
     "Kirikou"
 ]
 
-# Show random quote
 
-if user_answer == "B":
-	pass
-elif user_answer == "C":
-	print("Oups, wrong answer!")
-else 
+# get a random quote from the specified list and return it
 
+def get_random_quote(my_list):
+	item = my_list[0]
+	return item
 
+user_answer = ""
 
-
-# Else:
-#  - show another quote
+while user_answer != "B":
+	print(get_random_quote(quotes))
+	user_answer = input("Appuyez sur Entrée pour voir une autre citation ou sur B pour quitter.")
