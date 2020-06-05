@@ -13,3 +13,17 @@ characters = [
     "le chat potté", 
     "Kirikou"
 ]
+
+# Show random quote
+
+if user_answer == "B":
+	pass
+elif user_answer == "C":
+	print("Oups, wrong answer!")
+else 
+
+
+
+
+# Else:
+#  - show another quote
