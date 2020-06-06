@@ -1,4 +1,7 @@
 # -*- coding: utf8 -*-
+import random
+import json
+
 quotes = [
     "Ecoutez-moi, Monsieur Shakespeare, nous avons beau être ou ne pas être, nous sommes !", 
     "On doit pouvoir choisir entre s'écouter parler et se faire entendre."
@@ -14,15 +17,39 @@ characters = [
     "Kirikou"
 ]
 
+def read_values_from_json(file,key):
+	values = []
+	with open(file) as f:
+		data = json.load(f)
+		for entry in data:
+			values.append(entry[key])
+	return values
 
-# get a random quote from the specified list and return it
+def get_random_character():
+	all_values = read_values_from_json("characters.json","character")
+	return get_random_item(all_values)
 
-def get_random_quote(my_list):
-	item = my_list[0]
+
+def get_random_quote():
+	all_values = read_values_from_json("quotes.json","quote")
+	return get_random_item(all_values)
+
+
+def get_random_item(my_list):
+	rand_numb = random.randint(0,len(my_list) - 1)
+	item = my_list[rand_numb]
 	return item
 
-user_answer = ""
+
+def message(character,quote):	
+	n_character = character.capitalize()
+	n_quote = quote.capitalize()
+	return "{} a dit : {}".format(n_character,n_quote)
+
+
+# Programm
+user_answer = input("Tapez entrée pour connaître une autre citation ou B pour quitter le programme.")
 
 while user_answer != "B":
-	print(get_random_quote(quotes))
-	user_answer = input("Appuyez sur Entrée pour voir une autre citation ou sur B pour quitter.")
+    print(message(get_random_character(), get_random_quote()))
+    user_answer = input('Tapez entrée pour connaître une autre citation ou B pour quitter le programme.')
