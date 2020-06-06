@@ -2,21 +2,6 @@
 import random
 import json
 
-quotes = [
-    "Ecoutez-moi, Monsieur Shakespeare, nous avons beau être ou ne pas être, nous sommes !", 
-    "On doit pouvoir choisir entre s'écouter parler et se faire entendre."
-]
-
-characters = [
-    "alvin et les Chipmunks", 
-    "Babar", 
-    "betty boop", 
-    "calimero", 
-    "casper", 
-    "le chat potté", 
-    "Kirikou"
-]
-
 def read_values_from_json(file,key):
 	values = []
 	with open(file) as f:
@@ -32,7 +17,7 @@ def get_random_character():
 
 def get_random_quote():
 	all_values = read_values_from_json("quotes.json","quote")
-	return get_random_item(all_values)
+	return get_random_item(all_values).strip()
 
 
 def get_random_item(my_list):
@@ -48,8 +33,10 @@ def message(character,quote):
 
 
 # Programm
-user_answer = input("Tapez entrée pour connaître une autre citation ou B pour quitter le programme.")
+user_answer = input(' ---------------------------------------------------------------------------- \n'
+    				'Tapez entrée pour connaître une autre citation ou B pour quitter le programme.\n')
 
 while user_answer != "B":
     print(message(get_random_character(), get_random_quote()))
-    user_answer = input('Tapez entrée pour connaître une autre citation ou B pour quitter le programme.')
+    user_answer = input(' ---------------------------------------------------------------------------- \n'
+    					'Tapez entrée pour connaître une autre citation ou B pour quitter le programme.\n')
